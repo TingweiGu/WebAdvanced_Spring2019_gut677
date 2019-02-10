@@ -1,0 +1,14 @@
+body{
+  margin-top: 150px;
+  text-align: center; 
+}
+
+ul{
+  list-style: none;
+}
+
+#choices a{
+  text-decoration: none;
+  color: black;
+  margin-left: -30px;
+}
