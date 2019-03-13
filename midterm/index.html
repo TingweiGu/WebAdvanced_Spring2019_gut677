@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+    <head>
+        <meta charset="UTF-8">
+        <title>midterm</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300|Josefin+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+        <link rel="stylesheet" href="css/style.css">
+        
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        
+        <script>
+             var url = "preview.json";
+            var resource = "image.json";
+
+            $.getJSON(url,function(data){
+
+                var output = '';
+                var id = [];
+
+                $.each(data.images,function(value){
+                    output += '<li id="list'+this.id+'"><div class="slides" id="' + this.id + '"' + '><img src="' + this.image + '"></div></li>';
+                    id.push(this.id);
+                });
+
+                $('.slider ul').append(output);
+            });
+        </script>    
+    </head>
+
+    <body>
+        <div class="container">
+          <div class="nine columns slider-container">
+              <div class="slider">            
+                  <ul>
+    <!--
+                    <li>
+                        <div class="slides">
+                            <img src="data/a1.png">
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="slides">
+                            <img src="data/b1.png">
+                        </div>
+                    </li>
+    -->
+                  </ul>
+
+                  <div id="slider-nav">
+                    <button data-dir="prev" id="prev"><span class="ion-ios-arrow-left"></span></button>
+                    <button data-dir="next" id="next"><span class="ion-ios-arrow-right"></span></button>
+                  </div>
+              </div>
+           </div><!--slider-container-->
+
+           <div id='image'>
+               
+               <div class="image1">
+                   <img src='data/a1.png' id='imgSize1' class="pic">
+               </div>
+
+               <div class="image2">
+                   <img src='data/a2.png' id='imgSize2' class="pic">
+               </div>
+
+           </div>
+
+           <div class="statusInitial"></div>
+      </div>  
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+      <script src="js/script.js"></script>
+
+    </body>
+
+</html>
+
+            
