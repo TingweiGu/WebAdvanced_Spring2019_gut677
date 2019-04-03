@@ -1,0 +1,230 @@
+html, body {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+}
+
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width:1450px;
+}
+
+@media all and (min-width: 800px) and (max-width: 1200px) {
+	body{
+		background-color: #FFFAF0;
+	}
+    
+    #d1, #d2, #d3, #d4 { 
+        left:430px;
+        top:130px;
+    }
+
+    #d5, #d6, #d7, #d8, #d9, #d10 { 
+        left:310px;
+        top:155px;
+    }
+
+    #d11, #d12, #d13, #d14, #d15, #d16 { 
+        left:167px;
+        top:180px;
+    }
+
+    #d17, #d18, #d19, #d20, #d21, #d22, #d23, #d24 { 
+        left:-25px;
+        top:205px;
+    }
+
+    #d25, #d26, #d27, #d28, #d29, #d30 { 
+        left:-193px;
+        top:230px;
+    }
+
+    #d31, #d32, #d33, #d34, #d35, #d36, #d37 { 
+        left:-289px;
+        top:255px;
+    }
+
+    #d38{ 
+        left:-265px;
+        top:255px;
+    }
+
+    #d39, #d40, #d41, #d42, #d43, #d44, #d45, #d46, #d47, #d48{ 
+        left:-505px;
+        top:280px;
+    }
+
+    #d49, #d50, #d51, #d52, #d53, #d54, #d55, #d56, #d57, #d58, #d59{ 
+        left:-769px;
+        top:305px;
+    }
+
+    #d0, #d60, #d61, #d62, #d63, #d64, #d65, #d66, #d67, #d68, #d69, #d70{ 
+        left:383px;
+        top:305px;
+    }
+
+    #d71, #d72, #d73, #d74, #d75, #d76, #d77, #d78, #d79, #d80, #d81{ 
+        left:119px;
+        top:330px;
+    }
+
+    #d82, #d83, #d84, #d85, #d86, #d87, #d88, #d89, #d90{ 
+        left:-121px;
+        top:355px;
+    }
+
+    #d91, #d92, #d93, #d94, #d95, #d96, #d97{ 
+        left:-313px;
+        top:380px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+	body{
+		background-color: #FFF5EE;
+	}
+    
+    #d1, #d2, #d3, #d4 { 
+	left:630px;
+	top:130px;
+    }
+
+    #d5, #d6, #d7, #d8, #d9, #d10 { 
+        left:510px;
+        top:155px;
+    }
+
+    #d11, #d12, #d13, #d14, #d15, #d16 { 
+        left:367px;
+        top:180px;
+    }
+
+    #d17, #d18, #d19, #d20, #d21, #d22, #d23, #d24 { 
+        left:175px;
+        top:205px;
+    }
+
+    #d25, #d26, #d27, #d28, #d29, #d30 { 
+        left:7px;
+        top:230px;
+    }
+
+    #d31, #d32, #d33, #d34, #d35, #d36, #d37 { 
+        left:-89px;
+        top:255px;
+    }
+
+    #d38{ 
+        left:-65px;
+        top:255px;
+    }
+
+    #d39, #d40, #d41, #d42, #d43, #d44, #d45, #d46, #d47, #d48{ 
+        left:-305px;
+        top:280px;
+    }
+
+    #d49, #d50, #d51, #d52, #d53, #d54, #d55, #d56, #d57, #d58, #d59{ 
+        left:-569px;
+        top:305px;
+    }
+
+    #d0, #d60, #d61, #d62, #d63, #d64, #d65, #d66, #d67, #d68, #d69, #d70{ 
+        left:583px;
+        top:305px;
+    }
+
+    #d71, #d72, #d73, #d74, #d75, #d76, #d77, #d78, #d79, #d80, #d81{ 
+        left:319px;
+        top:330px;
+    }
+
+    #d82, #d83, #d84, #d85, #d86, #d87, #d88, #d89, #d90{ 
+        left:79px;
+        top:355px;
+    }
+
+    #d91, #d92, #d93, #d94, #d95, #d96, #d97{ 
+        left:-113px;
+        top:380px;
+    }
+    
+}
+
+@media all and (max-width: 800px) {
+	body{
+		background-color: #FFFFF0;
+	}
+    
+    #d1, #d2, #d3, #d4 { 
+        left:230px;
+        top:130px;
+    }
+
+    #d5, #d6, #d7, #d8, #d9, #d10 { 
+        left:110px;
+        top:155px;
+    }
+
+    #d11, #d12, #d13, #d14, #d15, #d16 { 
+        left:-33px;
+        top:180px;
+    }
+
+    #d17, #d18, #d19, #d20, #d21, #d22, #d23, #d24 { 
+        left:-225px;
+        top:205px;
+    }
+
+    #d25, #d26, #d27, #d28, #d29, #d30 { 
+        left:-393px;
+        top:230px;
+    }
+
+    #d31, #d32, #d33, #d34, #d35, #d36, #d37 { 
+        left:-489px;
+        top:255px;
+    }
+
+    #d38{ 
+        left:-465px;
+        top:255px;
+    }
+
+    #d39, #d40, #d41, #d42, #d43, #d44, #d45, #d46, #d47, #d48{ 
+        left:-705px;
+        top:280px;
+    }
+
+    #d49, #d50, #d51, #d52, #d53, #d54, #d55, #d56, #d57, #d58, #d59{ 
+        left:-969px;
+        top:305px;
+    }
+
+    #d0, #d60, #d61, #d62, #d63, #d64, #d65, #d66, #d67, #d68, #d69, #d70{ 
+        left:183px;
+        top:305px;
+    }
+
+    #d71, #d72, #d73, #d74, #d75, #d76, #d77, #d78, #d79, #d80, #d81{ 
+        left:-81px;
+        top:330px;
+    }
+
+    #d82, #d83, #d84, #d85, #d86, #d87, #d88, #d89, #d90{ 
+        left:-321px;
+        top:355px;
+    }
+
+    #d91, #d92, #d93, #d94, #d95, #d96, #d97{ 
+        left:-513px;
+        top:380px;
+    }
+}

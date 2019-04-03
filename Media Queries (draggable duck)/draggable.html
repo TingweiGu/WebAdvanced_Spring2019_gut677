@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DUCK</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/paperscript" canvas="canvas">
+
+        var values = {
+            friction: 0.8,
+            timeStep: 0.01,
+            amount: 15,
+            mass: 2,
+            count: 0
+        };
+        values.invMass = 1 / values.mass;
+
+        var path, springs;
+        var size = view.size * [1.2, 1];
+
+        var Spring = function(a, b, strength, restLength) {
+            this.a = a;
+            this.b = b;
+            this.restLength = restLength || 80;
+            this.strength = strength ? strength : 0.55;
+            this.mamb = values.invMass * values.invMass;
+        };
+
+        Spring.prototype.update = function() {
+            var delta = this.b - this.a;
+            var dist = delta.length;
+            var normDistStrength = (dist - this.restLength) /
+                    (dist * this.mamb) * this.strength;
+            delta.y *= normDistStrength * values.invMass * 0.2;
+            if (!this.a.fixed)
+                this.a.y += delta.y;
+            if (!this.b.fixed)
+                this.b.y -= delta.y;
+        };
+
+
+        function createPath(strength) {
+            var path = new Path({
+                fillColor: '#00BFFF'
+            });
+            springs = [];
+            for (var i = 0; i <= values.amount; i++) {
+                var segment = path.add(new Point(i / values.amount, 0.5) * size);
+                var point = segment.point;
+                if (i == 0 || i == values.amount)
+                    point.y += size.height;
+                point.px = point.x;
+                point.py = point.y;
+                // The first two and last two points are fixed:
+                point.fixed = i < 2 || i > values.amount - 2;
+                if (i > 0) {
+                    var spring = new Spring(segment.previous.point, point, strength);
+                    springs.push(spring);
+                }
+            }
+            path.position.x -= size.width / 4;
+            return path;
+        }
+
+        function onResize() {
+            if (path)
+                path.remove();
+            size = view.bounds.size * [2, 1];
+            path = createPath(0.1);
+        }
+
+        function onMouseMove(event) {
+            var location = path.getNearestLocation(event.point);
+            var segment = location.segment;
+            var point = segment.point;
+
+            if (!point.fixed && location.distance < size.height / 10) {
+                var y = event.point.y;
+                point.y += (y - point.y) / 8;
+                var previous = segment.previous && segment.previous.point;
+                var next = segment.next && segment.next.point;
+                if (previous && !previous.fixed)
+                    previous.y += (y - previous.y) / 24;
+                if (next && !next.fixed)
+                    next.y += (y - next.y) / 24;
+            }
+        }
+
+        function onFrame(event) {
+            updateWave(path);
+        }
+
+        function updateWave(path) {
+            var force = 1 - values.friction * values.timeStep * values.timeStep;
+            for (var i = 0, l = path.segments.length; i < l; i++) {
+                var point = path.segments[i].point;
+                var dy = (point.y - point.py) * force;
+                point.py = point.y;
+                point.y = Math.max(point.y + dy, 0);
+            }
+
+            for (var j = 0, l = springs.length; j < l; j++) {
+                springs[j].update();
+            }
+            path.smooth({ type: 'continuous' });
+        }
+
+        function onKeyDown(event) {
+            if (event.key == 'space') {
+                path.fullySelected = !path.fullySelected;
+                path.fillColor = path.fullySelected ? null : '#00BFFF';
+            }
+        }
+    </script>
+</head>
+
+  <body>
+      <div id="wrapper">
+        <img src="image/yellow.png" id="d1" class="drag">
+        <img src="image/yellow.png" id="d2" class="drag">
+        <img src="image/yellow.png" id="d3" class="drag">
+        <img src="image/yellow.png" id="d4" class="drag">
+
+        <img src="image/yellow.png" id="d5" class="drag">
+        <img src="image/yellow.png" id="d6" class="drag">
+        <img src="image/yellow.png" id="d7" class="drag">
+        <img src="image/yellow.png" id="d8" class="drag">
+        <img src="image/yellow.png" id="d9" class="drag">
+        <img src="image/yellow.png" id="d10" class="drag">
+
+        <img src="image/orange.png" id="d11" class="drag">
+        <img src="image/yellow.png" id="d12" class="drag">
+        <img src="image/black.png" id="d13" class="drag">
+        <img src="image/yellow.png" id="d14" class="drag">
+        <img src="image/yellow.png" id="d15" class="drag">
+        <img src="image/yellow.png" id="d16" class="drag">
+
+        <img src="image/orange.png" id="d17" class="drag">
+        <img src="image/orange.png" id="d18" class="drag">
+        <img src="image/orange.png" id="d19" class="drag">
+        <img src="image/yellow.png" id="d20" class="drag">
+        <img src="image/yellow.png" id="d21" class="drag">
+        <img src="image/yellow.png" id="d22" class="drag">
+        <img src="image/yellow.png" id="d23" class="drag">
+        <img src="image/yellow.png" id="d24" class="drag">
+
+        <img src="image/orange.png" id="d25" class="drag">
+        <img src="image/orange.png" id="d26" class="drag">
+        <img src="image/orange.png" id="d27" class="drag">
+        <img src="image/yellow.png" id="d28" class="drag">
+        <img src="image/yellow.png" id="d29" class="drag">
+        <img src="image/yellow.png" id="d30" class="drag">
+
+        <img src="image/yellow.png" id="d31" class="drag">
+        <img src="image/yellow.png" id="d32" class="drag">
+        <img src="image/yellow.png" id="d33" class="drag">
+        <img src="image/yellow.png" id="d34" class="drag">
+        <img src="image/yellow.png" id="d35" class="drag">
+        <img src="image/yellow.png" id="d36" class="drag">
+        <img src="image/yellow.png" id="d37" class="drag">
+
+        <img src="image/yellow.png" id="d38" class="drag">
+
+        <img src="image/yellow.png" id="d39" class="drag">
+        <img src="image/yellow.png" id="d40" class="drag">
+        <img src="image/yellow.png" id="d41" class="drag">
+        <img src="image/yellow.png" id="d42" class="drag">
+        <img src="image/yellow.png" id="d43" class="drag">
+        <img src="image/yellow.png" id="d44" class="drag">
+        <img src="image/yellow.png" id="d45" class="drag">
+        <img src="image/yellow.png" id="d46" class="drag">
+        <img src="image/orange.png" id="d47" class="drag">
+        <img src="image/yellow.png" id="d48" class="drag">
+
+        <img src="image/yellow.png" id="d49" class="drag">
+        <img src="image/yellow.png" id="d50" class="drag">
+        <img src="image/yellow.png" id="d51" class="drag">
+        <img src="image/yellow.png" id="d52" class="drag">
+        <img src="image/orange.png" id="d53" class="drag">
+        <img src="image/yellow.png" id="d54" class="drag">
+        <img src="image/yellow.png" id="d55" class="drag">
+        <img src="image/yellow.png" id="d56" class="drag">
+        <img src="image/orange.png" id="d57" class="drag">
+        <img src="image/yellow.png" id="d58" class="drag">
+        <img src="image/yellow.png" id="d59" class="drag">
+
+        <img src="image/yellow.png" id="d60" class="drag">
+        <img src="image/yellow.png" id="d61" class="drag">
+        <img src="image/yellow.png" id="d62" class="drag">
+        <img src="image/yellow.png" id="d63" class="drag">
+        <img src="image/yellow.png" id="d64" class="drag">
+        <img src="image/yellow.png" id="d65" class="drag">
+        <img src="image/orange.png" id="d66" class="drag">
+        <img src="image/orange.png" id="d67" class="drag">
+        <img src="image/orange.png" id="d68" class="drag">
+        <img src="image/yellow.png" id="d69" class="drag">
+        <img src="image/yellow.png" id="d70" class="drag">
+        <img src="image/yellow.png" id="d0" class="drag">
+
+        <img src="image/yellow.png" id="d71" class="drag">
+        <img src="image/yellow.png" id="d72" class="drag">
+        <img src="image/yellow.png" id="d73" class="drag">
+        <img src="image/yellow.png" id="d74" class="drag">
+        <img src="image/yellow.png" id="d75" class="drag">
+        <img src="image/yellow.png" id="d76" class="drag">
+        <img src="image/yellow.png" id="d77" class="drag">
+        <img src="image/yellow.png" id="d78" class="drag">
+        <img src="image/yellow.png" id="d79" class="drag">
+        <img src="image/yellow.png" id="d80" class="drag">
+        <img src="image/yellow.png" id="d81" class="drag">
+
+        <img src="image/yellow.png" id="d82" class="drag">
+        <img src="image/yellow.png" id="d83" class="drag">
+        <img src="image/yellow.png" id="d84" class="drag">
+        <img src="image/yellow.png" id="d85" class="drag">
+        <img src="image/yellow.png" id="d86" class="drag">
+        <img src="image/yellow.png" id="d87" class="drag">
+        <img src="image/yellow.png" id="d88" class="drag">
+        <img src="image/yellow.png" id="d89" class="drag">
+        <img src="image/yellow.png" id="d90" class="drag">
+
+        <img src="image/yellow.png" id="d91" class="drag">
+        <img src="image/yellow.png" id="d92" class="drag">
+        <img src="image/yellow.png" id="d93" class="drag">
+        <img src="image/yellow.png" id="d94" class="drag">
+        <img src="image/yellow.png" id="d95" class="drag">
+        <img src="image/yellow.png" id="d96" class="drag">
+        <img src="image/yellow.png" id="d97" class="drag">
+      </div>
+      <canvas id="canvas" resize hidpi="off"></canvas>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/draggable.js"></script>
+    <script type="text/javascript" src="js/paper-full.js"></script>
+    <!-- <script type="text/paperscript" canvas="canvas" src="js/water.js"></script> -->
+  </body>
+</html>
