@@ -1,0 +1,61 @@
+body {
+  display: table;
+}
+
+img {
+  height: auto;
+  max-width: 40%;
+  display: inline-block;
+  margin-right: 150px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.js .imagemap__item {
+  display: none;
+}
+
+@media screen and (min-width: 48em) {
+  .imagemap__item:target {
+    display: inline-block;
+  }
+
+  .imagemap__item:target > .imagemap__text {
+    display: inline-block;
+  }
+}
+
+.imagemap__list{
+	list-style-type: none;
+	margin-left: 100px;
+	margin-top: 200px;
+}
+
+area{
+	outline: none;
+}
+
+.quotes{
+    font-family: 'Vollkorn', serif;
+    color: #003F5E;
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)；
+}
+
+@keyframes imageAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+    
+  100% {
+    transform: translateY(0);
+  }
+}
+
+img {
+  animation-name: imageAnimation;
+  animation-duration: 1s;
+}
