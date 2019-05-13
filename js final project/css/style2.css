@@ -1,0 +1,123 @@
+body {
+  display: table;
+}
+
+img {
+  height: auto;
+  max-width: 40%;
+  display: inline-block;
+  margin-right: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.js .imagemap__item {
+  display: none;
+}
+
+@media screen and (min-width: 48em) {
+  .imagemap__item:target {
+    display: inline-block;
+  }
+
+  .imagemap__item:target > .imagemap__text {
+    display: inline-block;
+  }
+}
+
+.imagemap__list{
+	list-style-type: none;
+	margin-left: 100px;
+	margin-top: 220px;
+}
+
+area{
+	outline: none;
+}
+
+.quotes{
+    font-family: 'Vollkorn', serif;
+    color: #003F5E;
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)；
+}
+
+@keyframes imageAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+    
+  100% {
+    transform: translateY(0);
+  }
+}
+
+img {
+  animation-name: imageAnimation;
+  animation-duration: 1s;
+}
+
+.imagemap__text p{
+  font-family: 'Vollkorn', serif;
+  color: #003F5E;
+  line-height: 1.7;
+}
+
+.imagemap__hl{
+  font-family: 'Vollkorn', serif;
+  color: #003F5E;
+  line-height: 1.7;
+  display: inline;
+  white-space:nowrap; 
+}
+
+#image2, #image3, #image5, #image6, #image7 {
+    margin: 0;
+    margin-bottom: -2px;
+    margin-left: 17.5vw;
+}
+
+#image4{
+    margin: 0;
+    display: inline;
+    margin-left: 14vw;
+    float: right;
+}
+
+.stitchImage{
+    max-width: 100%;
+    width: 200%;
+    margin: 0;
+    margin-left:-10px;
+    display:none;
+}
+
+.introduction{
+   font-family: 'Vollkorn', serif;
+   color: #003F5E;
+   line-height: 1.7;
+   width: 27%;
+   float: left;
+   margin-left: -350px;
+   margin-top:200px;
+}
+
+.back{
+    width:5%;
+    margin:0;
+    margin-left: 50px;
+    margin-bottom: -150px;
+}
+
+.steps{
+    font-family: 'Vollkorn', serif;
+    color: #003F5E;
+    line-height: 1.7;
+    float:right;
+    width:27%;
+    margin-top: 170px;
+    margin-right: 200px;
+}
